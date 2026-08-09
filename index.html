@@ -23,19 +23,6 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E">
 
-<!-- نگهبان خطا: اگر هر مشکلی پیش آمد، به‌جای مرگ خاموش، پیام فارسی نشان بده -->
-<script>
-window.addEventListener('error', function(){
-  try{
-    var b=document.getElementById('errBox');
-    if(!b){ if(!document.body) return;
-      b=document.createElement('div'); b.id='errBox'; b.className='errbox'; document.body.appendChild(b); }
-    b.hidden=false;
-    b.textContent='⚠️ مرورگر بخشی از برنامه را مسدود کرد. بهترین راه: در پوشهٔ فایل دستور python -m http.server 8000 را اجرا کن و صفحه را با آدرس http://localhost:8000 باز کن؛ یا از فایرفاکس استفاده کن. 💡';
-  }catch(e){}
-});
-</script>
-
 <style>
 /* ============ پایه ============ */
 :root{
@@ -200,9 +187,6 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
   background:var(--ink); color:#fff; padding:12px 22px; border-radius:999px; font-weight:800; font-size:14.5px;
   opacity:0; transition:.3s; z-index:90; pointer-events:none; box-shadow:0 8px 20px rgba(47,37,71,.3); max-width:92vw; text-align:center;}
 .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-.errbox{position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:120; max-width:92vw;
-  background:#fff3f3; border:3px solid var(--red); color:#8c1d1d; border-radius:18px;
-  padding:12px 18px; font-weight:800; font-size:13.5px; text-align:center; box-shadow:0 8px 0 rgba(47,37,71,.15);}
 .overlay{position:fixed; inset:0; background:rgba(47,37,71,.45); display:grid; place-items:center; z-index:100; opacity:0; transition:.2s;}
 .overlay.show{opacity:1;}
 .dialog{background:#fff; border:3px solid var(--ink); border-radius:24px; padding:24px 28px; text-align:center;
@@ -247,8 +231,6 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
   </svg>
   <span class="flower f1">🌷</span><span class="flower f2">🌼</span>
 </div>
-
-<div class="errbox" id="errBox" hidden role="alert"></div>
 
 <header class="topbar">
   <div class="brand">
@@ -342,11 +324,6 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
 (function(){
 'use strict';
 
-/* ===== دسترسی امن به حافظهٔ مرورگر (حتی روی file:// هم کرش نمی‌کند) ===== */
-var memStore={};
-function lsGet(k){ try{ return window.localStorage.getItem(k); }catch(e){ return (k in memStore)?memStore[k]:null; } }
-function lsSet(k,v){ try{ window.localStorage.setItem(k,v); return true; }catch(e){ try{ memStore[k]=v; }catch(e2){} return false; } }
-
 /* ================= بوم ================= */
 var CW=1280, CH=900;
 var cv=document.getElementById('board');
@@ -354,7 +331,7 @@ var ctx=cv.getContext('2d',{willReadFrequently:true});
 ctx.fillStyle='#fff'; ctx.fillRect(0,0,CW,CH);
 ctx.lineCap='round'; ctx.lineJoin='round';
 
-var tool='pen', color='#ff4b4b', size=12, needsSave=false, warnedStore=false;
+var tool='pen', color='#ff4b4b', size=12, needsSave=false;
 var undoStack=[], UNDO_MAX=18;
 var paper=document.getElementById('paper');
 var cur=document.getElementById('cursor');
@@ -535,11 +512,8 @@ function saveNow(withBadge){
   try{ data=cv.toDataURL('image/png'); if(data.length>2500000) data=cv.toDataURL('image/jpeg',.85); }
   catch(e){ try{ data=cv.toDataURL('image/jpeg',.7); }catch(e2){} }
   if(!data) return;
-  var ok=lsSet(KEY, JSON.stringify({t:Date.now(), d:data}));
-  if(!ok){ try{ ok=lsSet(KEY, JSON.stringify({t:Date.now(), d:cv.toDataURL('image/jpeg',.5)})); }catch(e3){} }
-  needsSave=false; if(withBadge) showBadge();
-  if(!ok && !warnedStore){ warnedStore=true;
-    toast('💡 ذخیرهٔ خودکار در این حالت موقتی است؛ برای ذخیرهٔ دائمی، صفحه را با http://localhost باز کن',5500); }
+  try{ localStorage.setItem(KEY, JSON.stringify({t:Date.now(), d:data})); needsSave=false; if(withBadge) showBadge(); }
+  catch(err){ try{ localStorage.setItem(KEY, JSON.stringify({t:Date.now(), d:cv.toDataURL('image/jpeg',.55)})); needsSave=false; if(withBadge) showBadge(); }catch(e3){} }
 }
 setInterval(function(){ if(needsSave) saveNow(true); },10000);
 window.addEventListener('pagehide', function(){ saveNow(false); });
@@ -548,7 +522,7 @@ document.getElementById('saveBtn').addEventListener('click', function(){ needsSa
 
 /* بازیابی نقاشی قبلی */
 (function restore(){
-  var raw=lsGet(KEY);
+  var raw=null; try{ raw=localStorage.getItem(KEY); }catch(e){}
   if(!raw) return;
   try{
     var obj=JSON.parse(raw); if(!obj||!obj.d) return;
@@ -609,7 +583,7 @@ function toast(msg,ms){ toastEl.textContent=msg; toastEl.classList.add('show');
 
 /* ================= صدا: ملودی‌ها با Web Audio ================= */
 var actx=null, master=null, melodyBus=null, sfxBus=null, muted=false;
-muted = lsGet('naghashikhoneh-mute')==='1';
+try{ muted=localStorage.getItem('naghashikhoneh-mute')==='1'; }catch(e){}
 function ac(){
   if(!actx){ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null;
     actx=new AC(); master=actx.createGain(); master.gain.value=muted?0:1; master.connect(actx.destination);
@@ -715,7 +689,7 @@ function paintMute(){
 }
 muteBtn.addEventListener('click', function(){
   muted=!muted;
-  lsSet('naghashikhoneh-mute', muted?'1':'0');
+  try{ localStorage.setItem('naghashikhoneh-mute', muted?'1':'0'); }catch(e){}
   if(actx&&master) master.gain.setTargetAtTime(muted?0:1, actx.currentTime,.015);
   paintMute(); if(!muted) blip(700,.09,'sine',.2);
 });
