@@ -11,8 +11,8 @@
 
 <!-- 🔧 نام و آدرس سایت خودتان را در سه تگ زیر جایگزین کنید -->
 <meta name="author" content="نام شما">
-<link rel="canonical" href="https://USERNAME.github.io/naghashikhooneh/">
-<meta property="og:url" content="https://USERNAME.github.io/naghashikhooneh/">
+<link rel="canonical" href="https://intellsoft.github.io/naghashikhooneh/">
+<meta property="og:url" content="https://intellsoft.github.io/naghashikhooneh/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
@@ -133,27 +133,7 @@ h1{margin:0; font-size:clamp(30px,4.6vw,50px); font-weight:900; line-height:1.15
 .sep{width:3px; margin:2px 4px; border-radius:2px; background:repeating-linear-gradient(45deg, rgba(47,37,71,.25) 0 6px, transparent 6px 12px);}
 .grouplbl{align-self:center; font-size:12px; font-weight:900; color:#6b5d8f;}
 
-/* کاغذ نقاشی */
-.paper{position:relative; margin-top:16px; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:10px;
-  box-shadow:0 14px 0 -6px rgba(47,37,71,.16), 0 26px 42px rgba(47,37,71,.18);}
-/* 🔧 چسب‌ها نباید جلوی قلم را بگیرند */
-.tape{position:absolute; top:-14px; width:112px; height:30px; background:rgba(255,222,89,.85);
-  border:2px dashed rgba(140,110,20,.25); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.08); z-index:2; pointer-events:none;}
-.t1{left:7%; transform:rotate(-7deg);} .t2{right:7%; transform:rotate(6deg);}
-#board{display:block; width:100%; height:auto; border-radius:10px; border:2px dashed #ddd6ee;
-  background:#fff; touch-action:none; cursor:none;}
-.ghost{position:absolute; inset:0; display:grid; place-items:center; pointer-events:none;
-  font-size:clamp(20px,4vw,38px); font-weight:900; color:rgba(47,37,71,.13); z-index:2;}
-.save-badge{position:absolute; top:16px; left:16px; background:#2fbf71; color:#fff; padding:6px 13px;
-  border-radius:999px; font-weight:800; font-size:13px; opacity:0; transform:translateY(-8px) scale(.9);
-  transition:.3s; pointer-events:none; box-shadow:0 3px 0 rgba(0,0,0,.15); z-index:3;}
-.save-badge.show{opacity:1; transform:none;}
-#cursor{position:absolute; display:none; place-items:center; pointer-events:none; z-index:4;
-  border-radius:50%; border:2.5px solid rgba(0,0,0,.55); transform:translate(-50%,-50%);
-  box-shadow:0 0 0 2px rgba(255,255,255,.75);}
-#cursor.emoji{border:0; box-shadow:none; line-height:1;}
-
-/* پالت رنگ و اندازه */
+/* پالت رنگ و اندازه (بالای بوم، زیر نوار ابزار) */
 .palette-wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px;
   background:rgba(255,255,255,.72); border:3px solid var(--ink); border-radius:24px; padding:14px; box-shadow:var(--shadow);}
 .palette{display:flex; flex-wrap:wrap; gap:9px; justify-content:center;}
@@ -171,6 +151,25 @@ h1{margin:0; font-size:clamp(30px,4.6vw,50px); font-weight:900; line-height:1.15
 .size:hover{transform:translateY(-3px);}
 .size i{display:block; background:var(--ink); border-radius:50%;}
 .size[aria-pressed="true"]{background:#ffe89a;}
+
+/* کاغذ نقاشی */
+.paper{position:relative; margin-top:2px; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:10px;
+  box-shadow:0 14px 0 -6px rgba(47,37,71,.16), 0 26px 42px rgba(47,37,71,.18);}
+.tape{position:absolute; top:-14px; width:112px; height:30px; background:rgba(255,222,89,.85);
+  border:2px dashed rgba(140,110,20,.25); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.08); z-index:2; pointer-events:none;}
+.t1{left:7%; transform:rotate(-7deg);} .t2{right:7%; transform:rotate(6deg);}
+#board{display:block; width:100%; height:auto; border-radius:10px; border:2px dashed #ddd6ee;
+  background:#fff; touch-action:none; cursor:none;}
+.ghost{position:absolute; inset:0; display:grid; place-items:center; pointer-events:none;
+  font-size:clamp(20px,4vw,38px); font-weight:900; color:rgba(47,37,71,.13); z-index:2;}
+.save-badge{position:absolute; top:16px; left:16px; background:#2fbf71; color:#fff; padding:6px 13px;
+  border-radius:999px; font-weight:800; font-size:13px; opacity:0; transform:translateY(-8px) scale(.9);
+  transition:.3s; pointer-events:none; box-shadow:0 3px 0 rgba(0,0,0,.15); z-index:3;}
+.save-badge.show{opacity:1; transform:none;}
+#cursor{position:absolute; display:none; place-items:center; pointer-events:none; z-index:4;
+  border-radius:50%; border:2.5px solid rgba(0,0,0,.55); transform:translate(-50%,-50%);
+  box-shadow:0 0 0 2px rgba(255,255,255,.75);}
+#cursor.emoji{border:0; box-shadow:none; line-height:1;}
 
 /* دکمه‌های اصلی */
 .actions{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center;}
@@ -273,6 +272,7 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
 <main>
   <section class="studio" aria-label="استودیوی نقاشی">
 
+    <!-- ۱) نوار ابزارها -->
     <div class="toolbar" role="group" aria-label="جعبه ابزار نقاشی">
       <button type="button" class="tool" data-tool="pen" aria-pressed="true" title="با قلم بکش"><span class="ico" aria-hidden="true">✏️</span><span>قلم</span></button>
       <button type="button" class="tool" data-tool="fill" aria-pressed="false" title="با سطل، داخل شکل‌ها را رنگ کن"><span class="ico" aria-hidden="true">🪣</span><span>سطل رنگ</span></button>
@@ -288,15 +288,7 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
       <button type="button" class="tool warn" id="clearBtn" title="پاک کردن همهٔ صفحه"><span class="ico" aria-hidden="true">🗑️</span><span>پاک‌پاک</span></button>
     </div>
 
-    <div class="paper" id="paper">
-      <span class="tape t1" aria-hidden="true"></span>
-      <span class="tape t2" aria-hidden="true"></span>
-      <canvas id="board" width="1280" height="900" aria-label="بوم نقاشی: با قلم بکش، با سطل رنگ کن، با انگشت یا موس کار کن"></canvas>
-      <div class="ghost" id="ghost" aria-hidden="true">🖍️ از همین‌جا شروع کن!</div>
-      <div id="cursor" aria-hidden="true"></div>
-      <div class="save-badge" id="saveBadge" aria-hidden="true">✨ ذخیره شد</div>
-    </div>
-
+    <!-- ۲) نوار انتخاب رنگ و اندازه (بالای بوم) -->
     <div class="palette-wrap">
       <div class="palette" id="palette" role="group" aria-label="انتخاب رنگ"></div>
       <label class="custom" title="رنگ دلخواه خودت را انتخاب کن">
@@ -306,6 +298,17 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
       <div class="sizes" id="sizes" role="group" aria-label="اندازهٔ قلم"></div>
     </div>
 
+    <!-- ۳) بوم نقاشی -->
+    <div class="paper" id="paper">
+      <span class="tape t1" aria-hidden="true"></span>
+      <span class="tape t2" aria-hidden="true"></span>
+      <canvas id="board" width="1280" height="900" aria-label="بوم نقاشی: با قلم بکش، با سطل رنگ کن، با انگشت یا موس کار کن"></canvas>
+      <div class="ghost" id="ghost" aria-hidden="true">🖍️ از همین‌جا شروع کن!</div>
+      <div id="cursor" aria-hidden="true"></div>
+      <div class="save-badge" id="saveBadge" aria-hidden="true">✨ ذخیره شد</div>
+    </div>
+
+    <!-- ۴) دکمه‌های اصلی -->
     <div class="actions">
       <button type="button" class="btn primary" id="downloadBtn">📥 عکس نقاشیمو بگیر!</button>
       <button type="button" class="btn" id="saveBtn">💾 ذخیره کن</button>
@@ -572,7 +575,7 @@ document.getElementById('downloadBtn').addEventListener('click', function(){
   var a=document.createElement('a'); a.href=out.toDataURL('image/png');
   var fn='نقاشی من';
   try{ fn+=' - '+new Intl.DateTimeFormat('fa-IR-u-nu-fa',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/\//g,'-'); }catch(e){}
-  a.download=fn+'.png'; document.body.appendChild(a); a.remove?0:0; document.body.appendChild(a); a.click(); a.remove();
+  a.download=fn+'.png'; document.body.appendChild(a); a.click(); a.remove();
   needsSave=true; saveNow(false); confetti(); sFanfare(); toast('🎉 عکس نقاشیت آماده شد! آفرین!');
 });
 function confetti(){
