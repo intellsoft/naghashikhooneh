@@ -11,8 +11,8 @@
 
 <!-- 🔧 نام و آدرس سایت خودتان را در سه تگ زیر جایگزین کنید -->
 <meta name="author" content="نام شما">
-<link rel="canonical" href="https://example.com/">
-<meta property="og:url" content="https://example.com/">
+<link rel="canonical" href="https://USERNAME.github.io/naghashikhooneh/">
+<meta property="og:url" content="https://USERNAME.github.io/naghashikhooneh/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
@@ -23,10 +23,20 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E">
 
+<!-- نگهبان خطا: اگر هر مشکلی پیش آمد، به‌جای مرگ خاموش، پیام فارسی نشان بده -->
+<script>
+window.addEventListener('error', function(){
+  try{
+    var b=document.getElementById('errBox');
+    if(!b){ if(!document.body) return;
+      b=document.createElement('div'); b.id='errBox'; b.className='errbox'; document.body.appendChild(b); }
+    b.hidden=false;
+    b.textContent='⚠️ مرورگر بخشی از برنامه را مسدود کرد. بهترین راه: در پوشهٔ فایل دستور python -m http.server 8000 را اجرا کن و صفحه را با آدرس http://localhost:8000 باز کن؛ یا از فایرفاکس استفاده کن. 💡';
+  }catch(e){}
+});
+</script>
+
 <style>
-  /* 🔧 اصلاح باگ: لایه‌های hidden نباید کلیک‌ها را ببلعند */
-[hidden]{display:none !important;}
-.tape{pointer-events:none;}
 /* ============ پایه ============ */
 :root{
   --ink:#2f2547; --paper:#ffffff;
@@ -35,6 +45,8 @@
   --shadow:0 5px 0 rgba(47,37,71,.22);
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+/* 🔧 اصلاح باگ اصلی: عناصر hidden نباید روی صفحه بمانند و کلیک‌ها را ببلعند */
+[hidden]{display:none !important;}
 html,body{margin:0; padding:0;}
 body{
   min-height:100vh; display:flex; flex-direction:column;
@@ -124,8 +136,9 @@ h1{margin:0; font-size:clamp(30px,4.6vw,50px); font-weight:900; line-height:1.15
 /* کاغذ نقاشی */
 .paper{position:relative; margin-top:16px; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:10px;
   box-shadow:0 14px 0 -6px rgba(47,37,71,.16), 0 26px 42px rgba(47,37,71,.18);}
+/* 🔧 چسب‌ها نباید جلوی قلم را بگیرند */
 .tape{position:absolute; top:-14px; width:112px; height:30px; background:rgba(255,222,89,.85);
-  border:2px dashed rgba(140,110,20,.25); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.08); z-index:2;}
+  border:2px dashed rgba(140,110,20,.25); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.08); z-index:2; pointer-events:none;}
 .t1{left:7%; transform:rotate(-7deg);} .t2{right:7%; transform:rotate(6deg);}
 #board{display:block; width:100%; height:auto; border-radius:10px; border:2px dashed #ddd6ee;
   background:#fff; touch-action:none; cursor:none;}
@@ -190,6 +203,9 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
   background:var(--ink); color:#fff; padding:12px 22px; border-radius:999px; font-weight:800; font-size:14.5px;
   opacity:0; transition:.3s; z-index:90; pointer-events:none; box-shadow:0 8px 20px rgba(47,37,71,.3); max-width:92vw; text-align:center;}
 .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+.errbox{position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:120; max-width:92vw;
+  background:#fff3f3; border:3px solid var(--red); color:#8c1d1d; border-radius:18px;
+  padding:12px 18px; font-weight:800; font-size:13.5px; text-align:center; box-shadow:0 8px 0 rgba(47,37,71,.15);}
 .overlay{position:fixed; inset:0; background:rgba(47,37,71,.45); display:grid; place-items:center; z-index:100; opacity:0; transition:.2s;}
 .overlay.show{opacity:1;}
 .dialog{background:#fff; border:3px solid var(--ink); border-radius:24px; padding:24px 28px; text-align:center;
@@ -234,6 +250,8 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
   </svg>
   <span class="flower f1">🌷</span><span class="flower f2">🌼</span>
 </div>
+
+<div class="errbox" id="errBox" hidden role="alert"></div>
 
 <header class="topbar">
   <div class="brand">
@@ -299,7 +317,7 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
 
 <!-- 🔧 نام خودتان و آدرس سایت‌تان را در خط زیر جایگزین کنید -->
 <section class="signature" aria-label="دربارهٔ سازنده">
-  <p>✍️ ساخته‌شده با ❤️ توسط <a href="https://example.com/" rel="author noopener">نام شما</a></p>
+  <p>✍️ ساخته‌شده با ❤️ توسط <a href="https://YOUR-SITE.com/" rel="author noopener">نام شما</a></p>
 </section>
 
 <footer>
@@ -327,6 +345,11 @@ footer{margin-top:auto; text-align:center; padding:20px 16px 190px;}
 (function(){
 'use strict';
 
+/* ===== دسترسی امن به حافظهٔ مرورگر (حتی روی file:// هم کرش نمی‌کند) ===== */
+var memStore={};
+function lsGet(k){ try{ return window.localStorage.getItem(k); }catch(e){ return (k in memStore)?memStore[k]:null; } }
+function lsSet(k,v){ try{ window.localStorage.setItem(k,v); return true; }catch(e){ try{ memStore[k]=v; }catch(e2){} return false; } }
+
 /* ================= بوم ================= */
 var CW=1280, CH=900;
 var cv=document.getElementById('board');
@@ -334,7 +357,7 @@ var ctx=cv.getContext('2d',{willReadFrequently:true});
 ctx.fillStyle='#fff'; ctx.fillRect(0,0,CW,CH);
 ctx.lineCap='round'; ctx.lineJoin='round';
 
-var tool='pen', color='#ff4b4b', size=12, needsSave=false;
+var tool='pen', color='#ff4b4b', size=12, needsSave=false, warnedStore=false;
 var undoStack=[], UNDO_MAX=18;
 var paper=document.getElementById('paper');
 var cur=document.getElementById('cursor');
@@ -515,8 +538,11 @@ function saveNow(withBadge){
   try{ data=cv.toDataURL('image/png'); if(data.length>2500000) data=cv.toDataURL('image/jpeg',.85); }
   catch(e){ try{ data=cv.toDataURL('image/jpeg',.7); }catch(e2){} }
   if(!data) return;
-  try{ localStorage.setItem(KEY, JSON.stringify({t:Date.now(), d:data})); needsSave=false; if(withBadge) showBadge(); }
-  catch(err){ try{ localStorage.setItem(KEY, JSON.stringify({t:Date.now(), d:cv.toDataURL('image/jpeg',.55)})); needsSave=false; if(withBadge) showBadge(); }catch(e3){} }
+  var ok=lsSet(KEY, JSON.stringify({t:Date.now(), d:data}));
+  if(!ok){ try{ ok=lsSet(KEY, JSON.stringify({t:Date.now(), d:cv.toDataURL('image/jpeg',.5)})); }catch(e3){} }
+  needsSave=false; if(withBadge) showBadge();
+  if(!ok && !warnedStore){ warnedStore=true;
+    toast('💡 ذخیرهٔ خودکار در این حالت موقتی است؛ برای ذخیرهٔ دائمی، صفحه را با http://localhost باز کن',5500); }
 }
 setInterval(function(){ if(needsSave) saveNow(true); },10000);
 window.addEventListener('pagehide', function(){ saveNow(false); });
@@ -525,7 +551,7 @@ document.getElementById('saveBtn').addEventListener('click', function(){ needsSa
 
 /* بازیابی نقاشی قبلی */
 (function restore(){
-  var raw=null; try{ raw=localStorage.getItem(KEY); }catch(e){}
+  var raw=lsGet(KEY);
   if(!raw) return;
   try{
     var obj=JSON.parse(raw); if(!obj||!obj.d) return;
@@ -546,7 +572,7 @@ document.getElementById('downloadBtn').addEventListener('click', function(){
   var a=document.createElement('a'); a.href=out.toDataURL('image/png');
   var fn='نقاشی من';
   try{ fn+=' - '+new Intl.DateTimeFormat('fa-IR-u-nu-fa',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/\//g,'-'); }catch(e){}
-  a.download=fn+'.png'; document.body.appendChild(a); a.click(); a.remove();
+  a.download=fn+'.png'; document.body.appendChild(a); a.remove?0:0; document.body.appendChild(a); a.click(); a.remove();
   needsSave=true; saveNow(false); confetti(); sFanfare(); toast('🎉 عکس نقاشیت آماده شد! آفرین!');
 });
 function confetti(){
@@ -586,7 +612,7 @@ function toast(msg,ms){ toastEl.textContent=msg; toastEl.classList.add('show');
 
 /* ================= صدا: ملودی‌ها با Web Audio ================= */
 var actx=null, master=null, melodyBus=null, sfxBus=null, muted=false;
-try{ muted=localStorage.getItem('naghashikhoneh-mute')==='1'; }catch(e){}
+muted = lsGet('naghashikhoneh-mute')==='1';
 function ac(){
   if(!actx){ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null;
     actx=new AC(); master=actx.createGain(); master.gain.value=muted?0:1; master.connect(actx.destination);
@@ -692,7 +718,7 @@ function paintMute(){
 }
 muteBtn.addEventListener('click', function(){
   muted=!muted;
-  try{ localStorage.setItem('naghashikhoneh-mute', muted?'1':'0'); }catch(e){}
+  lsSet('naghashikhoneh-mute', muted?'1':'0');
   if(actx&&master) master.gain.setTargetAtTime(muted?0:1, actx.currentTime,.015);
   paintMute(); if(!muted) blip(700,.09,'sine',.2);
 });
