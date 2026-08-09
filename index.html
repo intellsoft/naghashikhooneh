@@ -24,6 +24,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E">
 
 <style>
+  /* 🔧 اصلاح باگ: لایه‌های hidden نباید کلیک‌ها را ببلعند */
+[hidden]{display:none !important;}
+.tape{pointer-events:none;}
 /* ============ پایه ============ */
 :root{
   --ink:#2f2547; --paper:#ffffff;
