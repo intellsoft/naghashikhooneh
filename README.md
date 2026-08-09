@@ -2,22 +2,22 @@
 
 # 🎨 نقاشی‌خونه
 
-> **بکش 🖌️ رنگ کن 🪣 عکس بگیر 📸** — دنیای رنگارنگ نقاشی برای بچه‌ها!
+> **بکش 🖌️ رنگ کن 🪣 عکس بگیر 📸** — دنیای رنگارنگ نقاشی برای بچه‌ها
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)]()
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)]()
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)]()
-[![بدون وابستگی](https://img.shields.io/badge/Dependencies-Zero-success?style=flat-square)]()
-[![Made for Kids](https://img.shields.io/badge/Made%20for-Kids-ff6f61?style=flat-square)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[[HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)]()
+[[CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)]()
+[[JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)]()
+[[بدون وابستگی](https://img.shields.io/badge/Dependencies-Zero-success?style=flat-square)]()
+[[Made for Kids](https://img.shields.io/badge/Made%20for-Kids-ff6f61?style=flat-square)]()
+[[License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-🌐 **دموی زنده:** [https://USERNAME.github.io/naghashikhooneh/](https://USERNAME.github.io/naghashikhooneh/)
+🌐 **دموی زنده:** [https://intellsoft.github.io/naghashikhooneh/](https://intellsoft.github.io/naghashikhooneh/)
 
 ---
 
 ## 🌟 دربارهٔ پروژه
 
-**نقاشی‌خونه** یک ابزار نقاشی آنلاین برای کودکان است؛ بچه‌ها با قلم شکل می‌کشند، با سطل رنگ داخل شکل‌ها را رنگ‌آمیزی می‌کنند (مثل کتاب رنگ‌آمیزی!) و در پایان عکس نقاشی‌شان را دانلود می‌کنند. همه‌چیز فقط در **یک فایل HTML** است — بدون CDN، بدون کتابخانهٔ خارجی، بدون نصب و بدون ثبت‌نام.
+**نقاشی‌خونه** یک ابزار نقاشی آنلاین برای کودکان است؛ بچه‌ها با قلم شکل می‌کشند، با سطل رنگ داخل شکل‌ها را رنگ‌آمیزی می‌کنند (مثل کتاب رنگ‌آمیزی) و در پایان عکس نقاشی‌شان را دانلود می‌کنند. همه‌چیز فقط در **یک فایل HTML** است — بدون CDN، بدون کتابخانهٔ خارجی، بدون نصب و بدون ثبت‌نام.
 
 ## ✨ امکانات
 
@@ -27,7 +27,7 @@
 | 🪣 | سطل رنگ برای رنگ‌آمیزی داخل شکل‌ها |
 | ⭐💗🌸🌞 | مُهرهای بامزه (ستاره، قلب، گل، خورشید) |
 | 🧽 | پاک‌کن و ↩️ برگردون (Undo) |
-| 📥 | دانلود خروجی PNG با نام و تاریخ شمسی + جشن کاغذرنگی! 🎉 |
+| 📥 | دانلود خروجی PNG با نام و تاریخ شمسی + جشن کاغذرنگی 🎉 |
 | 💾 | ذخیرهٔ خودکار در مرورگر — حتی وسط نقاشی؛ با بستن صفحه هم از بین نمی‌رود |
 | 🎵 | موزیک‌باکس با ۵ ملودی معروف (ستارهٔ کوچولو، تولد مبارک، زنگوله‌ها، سرود شادی، لالایی) + دکمهٔ بی‌صدا |
 | 📱 | رابط کودکانه، بزرگ و رنگارنگ؛ سازگار با لمسی، تبلت و موبایل |
@@ -37,13 +37,13 @@
 
 - `HTML5` + `CSS3` + `JavaScript` خالص (Vanilla)
 - `Canvas API` برای بوم نقاشی
-- `Web Audio API` برای ساخت ملودی‌ها داخل مرورگر (بدون فایل صوتی!)
+- `Web Audio API` برای ساخت ملودی‌ها داخل مرورگر (بدون فایل صوتی)
 - `localStorage` برای ذخیرهٔ خودکار
 - 🔇 **صفر وابستگی خارجی** — حتی آفلاین هم کار می‌کند
 
 ## 🖼️ پیش‌نمایش
 
-![پیش‌نمایش نقاشی‌خونه](screenshot.png)
+[پیش‌نمایش نقاشی‌خونه](screenshot.png)
 
 ## 🚀 اجرای محلی
 
@@ -79,13 +79,13 @@ python -m http.server 8000
 
 # 🎨 Naghashi Khooneh (The Painting House)
 
-> **Draw 🖌️ Color 🪣 Get your picture 📸** — a colorful painting world for kids!
+> **Draw 🖌️ Color 🪣 Get your picture 📸** — a colorful painting world for kids
 
-🌐 **Live Demo:** [https://USERNAME.github.io/naghashikhooneh/](https://USERNAME.github.io/naghashikhooneh/)
+🌐 **Live Demo:** [https://intellsoft.github.io/naghashikhooneh/](https://intellsoft.github.io/naghashikhooneh/)
 
 ## 🌟 About
 
-**Naghashi Khooneh** ("The Painting House") is an online drawing & coloring tool for children. Kids draw with a pencil, fill their shapes with the paint bucket (just like a coloring book!), and download the final picture as a PNG. The entire app lives in a **single HTML file** — no CDN, no external libraries, no install, no sign-up.
+**Naghashi Khooneh** ("The Painting House") is an online drawing & coloring tool for children. Kids draw with a pencil, fill their shapes with the paint bucket (just like a coloring book), and download the final picture as a PNG. The entire app lives in a **single HTML file** — no CDN, no external libraries, no install, no sign-up.
 
 ## ✨ Features
 
