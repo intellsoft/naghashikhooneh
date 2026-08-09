@@ -61,7 +61,7 @@ python -m http.server 8000
 
 ## 👤 سازنده
 
-ساخته‌شده با ❤️ توسط **[نام شما](https://intellsoft.ir)**
+ساخته‌شده با ❤️ توسط **[علی عباسپور](https://intellsoft.ir)**
 
 ## ❤️ تقدیم
 
@@ -140,7 +140,7 @@ Released under the [MIT License](LICENSE) — free to use, modify, and share.
 ```text
 MIT License
 
-Copyright (c) 2026 نام شما
+Copyright (c) 2026 علی عباسپور
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
